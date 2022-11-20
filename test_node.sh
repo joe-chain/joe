@@ -22,7 +22,6 @@ airdrop () {
   joed add-genesis-account joe1dy2t6syrsn9fsk3arvhw9nm3fx7g5cvxa2dx2l 10000000000ujoe --append # luncdao
   joed add-genesis-account joe1z8u80j9xcye4l2vumcq85y85h68ymjcw7nvnmy 10000000000ujoe --append # pupjoes
   # Chandra Station?
-  # Blockpane?
 
   # airdrop 1 - 1k joe per NFT joe
   joed add-genesis-account joe1cnwp99x5m24ucfjkh8csn0nt86x4j0vjz8yxt0 9000000000ujoe --append
@@ -179,7 +178,7 @@ from_scratch () {
   update_test_genesis '.app_state["mint"]["minter"]["inflation"]="0.690000000000000000"' # 69% inflation  
 
   update_test_genesis '.app_state["slashing"]["params"]["signed_blocks_window"]="42000"'
-  update_test_genesis '.app_state["slashing"]["params"]["min_signed_per_window"]="0.690000000000000000"'
+  update_test_genesis '.app_state["slashing"]["params"]["min_signed_per_window"]="0.420000000000000000"'
   update_test_genesis '.app_state["slashing"]["params"]["downtime_jail_duration"]="420s"'
   update_test_genesis '.app_state["slashing"]["params"]["slash_fraction_double_sign"]="0.149870000000000000"'
   update_test_genesis '.app_state["slashing"]["params"]["slash_fraction_downtime"]="0.012300000000000000"'
