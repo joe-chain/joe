@@ -16,6 +16,13 @@ command -v jq > /dev/null 2>&1 || { echo >&2 "jq not installed. More info: https
 
 airdrop () {
   joed add-genesis-account joe10r39fueph9fq7a6lgswu4zdsg8t3gxlq9c66u9 10000000000000ujoe --append # for the JOE DAO (reece)
+  # PBCUPS / NOTIONAL HERE
+  joed add-genesis-account joe1dy2t6syrsn9fsk3arvhw9nm3fx7g5cvxa2dx2l 10000000000ujoe --append # luncdao
+  joed add-genesis-account joe1z8u80j9xcye4l2vumcq85y85h68ymjcw7nvnmy 10000000000ujoe --append # pupjoes
+  # Chandra Station?
+  # Blockpane?
+
+
   joed add-genesis-account joe1cnwp99x5m24ucfjkh8csn0nt86x4j0vjz8yxt0 10000000000ujoe --append
   joed add-genesis-account joe1t59elqhcfn0uce9v7kndazwfx87ggv0uq64zfa 10000000000ujoe --append
   joed add-genesis-account joe159edfymz0p8mq85s7nw4fn336fsx0j4cd3nq5x 10000000000ujoe --append
