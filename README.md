@@ -23,7 +23,7 @@ In the future, JOE can add a burn
 
 Launch:
 - DEX
-- DAO, ICS721 in the future?
+- DAODAO name it JOEJOE, ICS721 in the future?
 - Joe NFT Marketplace, paid in $JOE token
 
 - CW NFTs -> exclude badkids, the ice cream lottery
