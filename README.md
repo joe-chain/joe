@@ -7,6 +7,8 @@ Tendermint: <http://95.217.113.126:26657>
 REST API: <http://95.217.113.126:1317/>
 
 
+Anyone can be a Joe, You don't have to own a Joe. You can right-click save images
+
 # What is JOE
 
 Joe is Joe.
