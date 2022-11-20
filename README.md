@@ -18,6 +18,7 @@ In the future, JOE can add a burn
 - setup Nginx for Explorer, https RPC & REST
 - no dev airdrop
 - send JOE to Vals in chat to start nodes
+- x/gov: Joe (yes) and Joe With Veto (veto)
 
 - Airdrop custom tokens -> other NFTs
 
