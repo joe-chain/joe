@@ -577,6 +577,8 @@ from_scratch () {
   update_test_genesis '.consensus_params["block"]["max_gas"]="100000000"'
   update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"]="21600s"' # 6 hours
   
+  update_test_genesis '.app_state["distribution"]["params"]["community_tax"]="0.694200000000000000"' # 69.420%
+
   update_test_genesis '.app_state["staking"]["params"]["bond_denom"]="ujoe"'  
   update_test_genesis '.app_state["staking"]["params"]["min_commission_rate"]="0.040000000000000000"' # 3%   
   update_test_genesis '.app_state["staking"]["params"]["unbonding_time"]="57600s"' # 16 hours    
