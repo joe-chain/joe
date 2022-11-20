@@ -214,4 +214,4 @@ sed -i '/laddr = "tcp:\/\/127.0.0.1:26657"/c\laddr = "tcp:\/\/0.0.0.0:26657"' ~/
 sed -i 's/cors_allowed_origins = \[\]/cors_allowed_origins = \["\*"\]/g' ~/.joed/config/config.toml
 
 # # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
-joed start --pruning=nothing  --minimum-gas-prices=0ujoe #--mode validator     
+joed start --pruning=nothing  --minimum-gas-prices=0ujoe --home $HOME/.joed/ #--mode validator     
