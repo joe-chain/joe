@@ -20,10 +20,8 @@ from_scratch () {
 
   # remove existing daemon
   rm -rf ~/.joed/* 
-
-  # if $KEY exists it should be deleted
-  # decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry
-  # joe1hj5fveer5cjtn4wd6wstzugjfdxzl0xpysfwwn
+  
+  # joe1hj5fveer5cjtn4wd6wstzugjfdxzl0xp0cyvu4
   echo "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry" | joed keys add $KEY --keyring-backend $KEYRING --algo $KEYALGO --recover
   # Set moniker and chain-id for Craft
   joed init $MONIKER --chain-id $CHAINID 
