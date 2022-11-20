@@ -4,9 +4,11 @@ Collection: <https://www.stargaze.zone/marketplace/stars1s8ydlqlacquvaxum0wegns9
 
 website: <https://www.justjoe.app/>
 
-Tendermint: <http://95.217.113.126:26657>
+Tendermint: <https://rpc.justjoe.app/>
 
-REST API: <http://95.217.113.126:1317/>
+REST API: <https://api.justjoe.app/>
+
+EXPLORER: <https://ping.justjoe.app/> (WIP, CORS issue)
 
 
 Anyone can be a Joe, You don't have to own a Joe. You can right-click save images

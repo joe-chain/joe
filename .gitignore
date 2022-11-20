@@ -3,3 +3,5 @@ build/
 .testnets/
 mnemonics.txt
 data/
+
+real.sh
