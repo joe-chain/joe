@@ -19,6 +19,8 @@ In the future, JOE can add a burn
 - no dev airdrop
 - send JOE to Vals in chat to start nodes
 
+- Airdrop custom tokens -> other NFTs
+
 Launch:
 - DEX
 - DAO, ICS721 in the future?
