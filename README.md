@@ -19,6 +19,10 @@ Joe makes no promises, though Joe has many features.
 Joe is better than many mainnets, this is a Joenet.
 Joe will slash you for many things, and Joe will be deflationary as you stake.
 
+# dAPPs coming to Joe
+- [Joertis Joeconomia](https://twitter.com/Cryptomancer__/status/1594283077882232834?s=20&t=SJJFfDS5ELmaBCj0JDgyhQ)
+- Jacoon Bet?
+
 # TODO
 - setup Nginx for Explorer, https RPC & REST
 - no dev airdrop
