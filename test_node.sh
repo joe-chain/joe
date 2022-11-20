@@ -15,6 +15,7 @@ joed config output "json"
 command -v jq > /dev/null 2>&1 || { echo >&2 "jq not installed. More info: https://stedolan.github.io/jq/download/"; exit 1; }
 
 airdrop () {
+  joed add-genesis-account joe10r39fueph9fq7a6lgswu4zdsg8t3gxlq9c66u9 10000000000000ujoe --append # for the JOE DAO (reece)
   joed add-genesis-account joe1cnwp99x5m24ucfjkh8csn0nt86x4j0vjz8yxt0 10000000000ujoe --append
   joed add-genesis-account joe1t59elqhcfn0uce9v7kndazwfx87ggv0uq64zfa 10000000000ujoe --append
   joed add-genesis-account joe159edfymz0p8mq85s7nw4fn336fsx0j4cd3nq5x 10000000000ujoe --append
