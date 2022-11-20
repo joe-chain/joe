@@ -32,10 +32,8 @@ Joe Space <https://www.cosmosibc.space/2022/11/1459665306268454915/%24JOE.mp3>
 
 # TODO
 - no dev airdrop
-- send JOE to Vals in chat to start nodes
 - x/gov: Joe (yes) and Joe With Veto (veto)
-
-- Airdrop custom tokens -> other NFTs
+- Airdrop custom tokens/NFts -> other NFTs on omniflix/stargaze
 
 Launch:
 - DEX
