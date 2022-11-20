@@ -65,7 +65,7 @@ from_scratch () {
   joed validate-genesis
 }
 
-from_scratch
+# from_scratch
 
 # Opens the RPC endpoint to outside connections
 sed -i '/laddr = "tcp:\/\/127.0.0.1:26657"/c\laddr = "tcp:\/\/0.0.0.0:26657"' ~/.joed/config/config.toml
