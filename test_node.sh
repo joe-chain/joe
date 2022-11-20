@@ -1,6 +1,6 @@
 # Ensure joe is installed first.
 
-KEY="joe1"
+KEY="validator"
 CHAINID="joe-1"
 MONIKER="localjoe"
 KEYALGO="secp256k1"
