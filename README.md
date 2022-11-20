@@ -31,7 +31,6 @@ Joe Space <https://www.cosmosibc.space/2022/11/1459665306268454915/%24JOE.mp3>
 - Jacoon Bet?
 
 # TODO
-- setup Nginx for Explorer, https RPC & REST
 - no dev airdrop
 - send JOE to Vals in chat to start nodes
 - x/gov: Joe (yes) and Joe With Veto (veto)
