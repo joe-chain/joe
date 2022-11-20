@@ -15,6 +15,9 @@ Joe is Joe.
 Joe has no dev fund, only airdrop to JOE holders.
 Joe has a 69.420% Tax and 69% inflation.
 In the future, JOE can add a burn
+Joe makes no promises, though Joe has many features.
+Joe is better than many mainnets, this is a Joenet.
+Joe will slash you for many things, and Joe will be deflationary as you stake.
 
 # TODO
 - setup Nginx for Explorer, https RPC & REST
