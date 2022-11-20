@@ -479,6 +479,7 @@ from_scratch () {
 # Opens the RPC endpoint to outside connections
 sed -i '/laddr = "tcp:\/\/127.0.0.1:26657"/c\laddr = "tcp:\/\/0.0.0.0:26657"' ~/.joed/config/config.toml
 sed -i 's/cors_allowed_origins = \[\]/cors_allowed_origins = \["\*"\]/g' ~/.joed/config/config.toml
+sed -i 's/address = ":8080"/address = ":8089"/g' ~/.joed/config/app.toml # bc ping.pub uses this
 
 # # Start the node (remove the --pruning=nothing flag if historical queries are not needed)
 joed start --pruning=nothing  --minimum-gas-prices=0ujoe --home $HOME/.joed/ #--mode validator     
