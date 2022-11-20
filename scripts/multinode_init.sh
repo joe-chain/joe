@@ -58,12 +58,12 @@ echo $DEMO_MNEMONIC_2 | $BINARY keys add demowallet2 --home $CHAIN_DIR/$CHAINID_
 echo $RLY_MNEMONIC_1 | $BINARY keys add rly1 --home $CHAIN_DIR/$CHAINID_1 --recover --keyring-backend=test 
 echo $RLY_MNEMONIC_2 | $BINARY keys add rly2 --home $CHAIN_DIR/$CHAINID_2 --recover --keyring-backend=test 
 
-$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_1 keys show val1 --keyring-backend test -a) 100000000000ueve  --home $CHAIN_DIR/$CHAINID_1
-$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_2 keys show val2 --keyring-backend test -a) 100000000000ueve  --home $CHAIN_DIR/$CHAINID_2
-$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_1 keys show demowallet1 --keyring-backend test -a) 100000000000ueve  --home $CHAIN_DIR/$CHAINID_1
-$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_2 keys show demowallet2 --keyring-backend test -a) 100000000000ueve  --home $CHAIN_DIR/$CHAINID_2
-$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_1 keys show rly1 --keyring-backend test -a) 100000000000ueve  --home $CHAIN_DIR/$CHAINID_1
-$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_2 keys show rly2 --keyring-backend test -a) 100000000000ueve  --home $CHAIN_DIR/$CHAINID_2
+$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_1 keys show val1 --keyring-backend test -a) 100000000000ujoe  --home $CHAIN_DIR/$CHAINID_1
+$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_2 keys show val2 --keyring-backend test -a) 100000000000ujoe  --home $CHAIN_DIR/$CHAINID_2
+$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_1 keys show demowallet1 --keyring-backend test -a) 100000000000ujoe  --home $CHAIN_DIR/$CHAINID_1
+$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_2 keys show demowallet2 --keyring-backend test -a) 100000000000ujoe  --home $CHAIN_DIR/$CHAINID_2
+$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_1 keys show rly1 --keyring-backend test -a) 100000000000ujoe  --home $CHAIN_DIR/$CHAINID_1
+$BINARY add-genesis-account $($BINARY --home $CHAIN_DIR/$CHAINID_2 keys show rly2 --keyring-backend test -a) 100000000000ujoe  --home $CHAIN_DIR/$CHAINID_2
 
 # Function updates the config based on a jq argument as a string
 update_test_genesis () {
@@ -76,16 +76,16 @@ update_test_genesis () {
 echo "Updating both genesis files..."
 update_test_genesis '.consensus_params["block"]["max_gas"]="100000000"'
 update_test_genesis '.app_state["gov"]["voting_params"]["voting_period"]="15s"'
-update_test_genesis '.app_state["staking"]["params"]["bond_denom"]="ueve"'
-# update_test_genesis '.app_state["bank"]["params"]["send_enabled"]=[{"denom": "ueve","enabled": false}]'
+update_test_genesis '.app_state["staking"]["params"]["bond_denom"]="ujoe"'
+# update_test_genesis '.app_state["bank"]["params"]["send_enabled"]=[{"denom": "ujoe","enabled": false}]'
 update_test_genesis '.app_state["staking"]["params"]["min_commission_rate"]="0.100000000000000000"'
-update_test_genesis '.app_state["mint"]["params"]["mint_denom"]="ueve"'  
-update_test_genesis '.app_state["gov"]["deposit_params"]["min_deposit"]=[{"denom": "ueve","amount": "1000000"}]' # 1 eve right now
-update_test_genesis '.app_state["crisis"]["constant_fee"]={"denom": "ueve","amount": "1000"}'
+update_test_genesis '.app_state["mint"]["params"]["mint_denom"]="ujoe"'  
+update_test_genesis '.app_state["gov"]["deposit_params"]["min_deposit"]=[{"denom": "ujoe","amount": "1000000"}]' # 1 eve right now
+update_test_genesis '.app_state["crisis"]["constant_fee"]={"denom": "ujoe","amount": "1000"}'
 
 echo "Creating and collecting gentx..."
-$BINARY gentx val1 7000000000ueve --home $CHAIN_DIR/$CHAINID_1 --chain-id $CHAINID_1 --keyring-backend test
-$BINARY gentx val2 7000000000ueve --home $CHAIN_DIR/$CHAINID_2 --chain-id $CHAINID_2 --keyring-backend test
+$BINARY gentx val1 7000000000ujoe --home $CHAIN_DIR/$CHAINID_1 --chain-id $CHAINID_1 --keyring-backend test
+$BINARY gentx val2 7000000000ujoe --home $CHAIN_DIR/$CHAINID_2 --chain-id $CHAINID_2 --keyring-backend test
 $BINARY collect-gentxs --home $CHAIN_DIR/$CHAINID_1
 $BINARY collect-gentxs --home $CHAIN_DIR/$CHAINID_2
 

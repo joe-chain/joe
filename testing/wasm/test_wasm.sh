@@ -6,7 +6,7 @@ export KEYALGO="secp256k1"
 export joed_CHAIN_ID="eve-t1"
 export joed_KEYRING_BACKEND="os"
 export joed_NODE="http://localhost:26657"
-export joed_COMMAND_ARGS="--gas-prices="0.025ueve" --gas 5000000 -y --from $KEY"
+export joed_COMMAND_ARGS="--gas-prices="0.025ujoe" --gas 5000000 -y --from $KEY"
 
 export KEY_ADDR="eve1hj5fveer5cjtn4wd6wstzugjfdxzl0xpysfwwn"
 echo "decorate bright ozone fork gallery riot bus exhaust worth way bone indoor calm squirrel merry zero scheme cotton until shop any excess stage laundry" | joed keys add $KEY --keyring-backend $joed_KEYRING_BACKEND --algo $KEYALGO --recover

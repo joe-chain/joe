@@ -1,5 +1,5 @@
 package params
 
 const (
-	BaseCoinUnit = "ueve"
+	BaseCoinUnit = "ujoe"
 )

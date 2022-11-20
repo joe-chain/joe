@@ -26,11 +26,11 @@ rm $HOME/.joed/config/genesis.json
 rm $HOME/.joed/config/gentx/*.json
 
 # Give yourself 1exp for the genesis Tx signed
-joed init "$MONIKER" --chain-id $CHAIN_ID --staking-bond-denom ueve
-joed add-genesis-account $KEYNAME_ADDR 1000000ueve
+joed init "$MONIKER" --chain-id $CHAIN_ID --staking-bond-denom ujoe
+joed add-genesis-account $KEYNAME_ADDR 1000000ujoe
 
 # genesis transaction using all above variables
-joed gentx $KEYNAME 1000000ueve \
+joed gentx $KEYNAME 1000000ujoe \
     --home=$PROJECT_HOME \
     --chain-id=$CHAIN_ID \
     --moniker="$MONIKER" \

@@ -13,7 +13,7 @@ FOLDER = "gentx" # local dir where we store the gentx JSON files
 
 CUSTOM_GENESIS_ACCOUNT_VALUES = {
     # test_node account example
-    "eve1hj5fveer5cjtn4wd6wstzugjfdxzl0xpysfwwn": "2000000ueve # note here", # useful to auto gen extra for non gentx accounts, or to give them more
+    "eve1hj5fveer5cjtn4wd6wstzugjfdxzl0xpysfwwn": "2000000ujoe # note here", # useful to auto gen extra for non gentx accounts, or to give them more
 }
 
 def main():
@@ -35,7 +35,7 @@ def resetGenesisFile():
 
         genesis["app_state"]['genutil']["gen_txs"] = []
 
-        genesis["app_state"]['gov']["deposit_params"]['min_deposit'][0]['denom'] = 'ueve'
+        genesis["app_state"]['gov']["deposit_params"]['min_deposit'][0]['denom'] = 'ujoe'
         genesis["app_state"]['gov']["voting_params"]['voting_period'] = '43200s' # 2 days = 172800s
 
         genesis["app_state"]['slashing']['params']["signed_blocks_window"] = "10000"
@@ -47,11 +47,11 @@ def resetGenesisFile():
         genesis["app_state"]['staking']['params']["min_commission_rate"] = '0.10000000000000000' # 10% min commission
         genesis["app_state"]['distribution']['params']["community_tax"] = '0.20000000000000000' # 20% community tax
 
-        genesis["app_state"]['staking']['params']["bond_denom"] = 'ueve' 
-        genesis["app_state"]['crisis']['constant_fee']["denom"] = 'ueve' 
+        genesis["app_state"]['staking']['params']["bond_denom"] = 'ujoe' 
+        genesis["app_state"]['crisis']['constant_fee']["denom"] = 'ujoe' 
 
         genesis["app_state"]['mint']["minter"]["inflation"] = '0.150000000000000000' # 15% inflation
-        genesis["app_state"]['mint']["params"]["mint_denom"] = 'ueve'     
+        genesis["app_state"]['mint']["params"]["mint_denom"] = 'ujoe'     
 
     # save genesis.json
     with open(GENESIS_FILE, 'w') as f:
@@ -77,7 +77,7 @@ def createGenesisAccountsCommands():
     os.chdir(current_path)
     os.makedirs(FOLDER, exist_ok=True)
     gentx_files = os.listdir(FOLDER)
-    # give validators their amounts in the genesis (1ueve, or more if provided in the custom dict)
+    # give validators their amounts in the genesis (1ujoe, or more if provided in the custom dict)
     for file in gentx_files:
         f = open(FOLDER + "/" + file, 'r')
         data = json.load(f)
@@ -88,7 +88,7 @@ def createGenesisAccountsCommands():
         amt = validatorData['value']['amount']
 
         if val_addr not in CUSTOM_GENESIS_ACCOUNT_VALUES.keys():
-            print(f"eve add-genesis-account {val_addr} {amt}ueve #{moniker}")
+            print(f"eve add-genesis-account {val_addr} {amt}ujoe #{moniker}")
             continue # 
                 
     for account in CUSTOM_GENESIS_ACCOUNT_VALUES:

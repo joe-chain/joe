@@ -53,7 +53,7 @@
             "address": "eve1hj5fveer5cjtn4wd6wstzugjfdxzl0xpysfwwn",
             "coins": [
               {
-                "denom": "ueve",
+                "denom": "ujoe",
                 "amount": "1000000"
               }
             ]
@@ -61,7 +61,7 @@
         ],
         "supply": [
           {
-            "denom": "ueve",
+            "denom": "ujoe",
             "amount": "1000000"
           }
         ],
@@ -129,7 +129,7 @@
                     "key": "eOVVqQBnfoH2QCF6Ia+whevWCnUOQzE+YdYEiRCFcTc="
                   },
                   "value": {
-                    "denom": "ueve",
+                    "denom": "ujoe",
                     "amount": "1000000"
                   }
                 }
@@ -270,7 +270,7 @@
           "max_validators": 100,
           "max_entries": 7,
           "historical_entries": 10000,
-          "bond_denom": "ueve",
+          "bond_denom": "ujoe",
           "min_commission_rate": "0.000000000000000000"
         },
         "last_total_power": "0",

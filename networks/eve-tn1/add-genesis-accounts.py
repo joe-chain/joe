@@ -13,8 +13,8 @@ FOLDER = "gentx"
 
 CUSTOM_GENESIS_ACCOUNT_VALUES = {
     # 100eve for both
-    "eve1hj5fveer5cjtn4wd6wstzugjfdxzl0xpysfwwn": f"{100*1_000_000}ueve # reece, using key from ./test_node.sh",
-    # "...": f"{100*1_000_000}ueve # Jacobs eve validator address",
+    "eve1hj5fveer5cjtn4wd6wstzugjfdxzl0xpysfwwn": f"{100*1_000_000}ujoe # reece, using key from ./test_node.sh",
+    # "...": f"{100*1_000_000}ujoe # Jacobs eve validator address",
 }
 
 def main():
@@ -40,7 +40,7 @@ def resetGenesisFile():
 
         genesis["app_state"]['genutil']["gen_txs"] = []
 
-        genesis["app_state"]['gov']["deposit_params"]['min_deposit'][0]['denom'] = 'ueve'
+        genesis["app_state"]['gov']["deposit_params"]['min_deposit'][0]['denom'] = 'ujoe'
         genesis["app_state"]['gov']["voting_params"]['voting_period'] = '300s' # 5 min = 172800s, 5 days mainet?
 
         genesis["app_state"]['slashing']['params']["signed_blocks_window"] = "10000"
@@ -48,11 +48,11 @@ def resetGenesisFile():
         genesis["app_state"]['slashing']['params']["slash_fraction_double_sign"] = '0.050000000000000000' # 5% if you SlashLikeMo
         genesis["app_state"]['slashing']['params']["slash_fraction_downtime"] = '0.00000000000000000' # no downtime slash like Juno
 
-        genesis["app_state"]['staking']['params']["bond_denom"] = 'ueve' 
-        genesis["app_state"]['crisis']['constant_fee']["denom"] = 'ueve' 
+        genesis["app_state"]['staking']['params']["bond_denom"] = 'ujoe' 
+        genesis["app_state"]['crisis']['constant_fee']["denom"] = 'ujoe' 
 
         genesis["app_state"]['mint']["minter"]["inflation"] = '0.150000000000000000' # 15% inflation
-        genesis["app_state"]['mint']["params"]["mint_denom"] = 'ueve'        
+        genesis["app_state"]['mint']["params"]["mint_denom"] = 'ujoe'        
 
 
     # save genesis.json

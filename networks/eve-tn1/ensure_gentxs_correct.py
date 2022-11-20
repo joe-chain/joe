@@ -27,10 +27,10 @@ for file in gentx_files:
     bond_value = validatorData['value']
     amt = int(bond_value["amount"])/1_000_000
 
-    if bond_value['denom'] != 'ueve':
+    if bond_value['denom'] != 'ujoe':
         invalids += f'[!] Invalid denomination for validator: {moniker} {bond_value["denom"]} \n'    
     elif amt > 1.0: # TODO is there a limit we are setting for validators gentxs?
-        invalids += f'[!] Invalid ueve amount for validator: {moniker} {amt}\n'
+        invalids += f'[!] Invalid ujoe amount for validator: {moniker} {amt}\n'
     else:
         output += (f"{valop} {rate}%\texp: {amt}, {moniker.strip()}\n")    
 

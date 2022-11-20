@@ -7,11 +7,11 @@
       "key": "MinimumGasPricesParam",
       "value": [
         {
-          "denom": "ueve",
+          "denom": "ujoe",
           "amount": "0.0025"
         }
       ]
     }
   ],
-  "deposit": "100ueve"
+  "deposit": "100ujoe"
 }
