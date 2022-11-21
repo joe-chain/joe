@@ -30,14 +30,20 @@ Joe Space <https://www.cosmosibc.space/2022/11/1459665306268454915/%24JOE.mp3>
 - [Joertis Joeconomia](https://twitter.com/Cryptomancer__/status/1594283077882232834?s=20&t=SJJFfDS5ELmaBCj0JDgyhQ)
 - Jacoon Bet?
 
-# TODO
-- no dev airdrop
-- x/gov: Joe (yes) and Joe With Veto (veto)
-- Airdrop custom tokens/NFts -> other NFTs on omniflix/stargaze
+# Install Guide
+- https://polkachu.com/installation/joe
 
-Launch:
+# Tools & Services
+
+- https://polkachu.com/networks/joe
+
+
+# Launch features coming soon
 - DEX
 - DAODAO name it JOEJOE, ICS721 in the future?
 - Joe NFT Marketplace, paid in $JOE token
-
 - CW NFTs -> exclude badkids, the ice cream lottery
+
+# TODO
+- x/gov: Joe (yes) and Joe With Veto (veto)
+- Airdrop custom tokens/NFts -> other NFTs on omniflix/stargaze
