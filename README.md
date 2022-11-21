@@ -37,16 +37,24 @@ Then
 (All vals must run the same moniker, identity, website, and details. This way delegators are FORCED to evenly spread out funds without bias for best case uptime)
 
 # Tools & Services
-
 - https://polkachu.com/networks/joe
+
+# Endpoints
+## RPC:
+- https://rpc.justjoe.app/
+- https://joe.rpc.chandrastation.com/
+## REST
+- https://api.justjoe.app/
+- https://joe.api.chandrastation.com/
 
 
 # Launch features coming soon
-- DEX
-- DAODAO name it JOEJOE, ICS721 in the future?
+- DEX (swap.justjoe.app)
+- DAODAO name it JOEJOE
+- ICS721 in the future
 - Joe NFT Marketplace, paid in $JOE token
 - CW NFTs -> exclude badkids, the ice cream lottery
 
-# TODO
+# TODO:
 - x/gov: Joe (yes) and Joe With Veto (veto)
-- Airdrop custom tokens/NFts -> other NFTs on omniflix/stargaze
+- Airdrop custom tokens/NFTs -> other NFTs on omniflix/stargaze
