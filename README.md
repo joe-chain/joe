@@ -33,7 +33,7 @@ Joe Space <https://www.cosmosibc.space/2022/11/1459665306268454915/%24JOE.mp3>
 # Install Guide
 - https://polkachu.com/installation/joe
 Then
-- joed tx staking edit-validator --identity 6DB8AEDEFE5AB675 --new-moniker Joe --website https://justjoe.app --details="Just Joe" --from validator
+- joed tx staking edit-validator --identity 6DB8AEDEFE5AB675 --new-moniker Joe --website https://justjoe.app --details="Just Joe" --commission-rate 0.069 --from validator
 (All vals must run the same moniker, identity, website, and details. This way delegators are FORCED to evenly spread out funds without bias for best case uptime)
 
 # Tools & Services
