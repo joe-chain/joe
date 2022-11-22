@@ -28,7 +28,6 @@ Joe Space <https://www.cosmosibc.space/2022/11/1459665306268454915/%24JOE.mp3>
 
 # dAPPs coming to Joe
 - [Joertis Joeconomia](https://twitter.com/Cryptomancer__/status/1594283077882232834?s=20&t=SJJFfDS5ELmaBCj0JDgyhQ)
-- Jacoon Bet?
 
 # Install Guide
 - https://polkachu.com/installation/joe
@@ -47,6 +46,9 @@ Then
 - https://api.justjoe.app/
 - https://joe.api.chandrastation.com/
 
+
+# Launched
+- - https://joe.racoon.bet/
 
 # Launch features coming soon
 - DEX (swap.justjoe.app)
