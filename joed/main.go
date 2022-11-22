@@ -13,7 +13,7 @@ func main() {
 	app.SetAddressPrefixes()
 	rootCmd, _ := cmd.NewRootCmd()
 
-	if err := svrcmd.Execute(rootCmd, "EVE", app.DefaultNodeHome); err != nil {
+	if err := svrcmd.Execute(rootCmd, "JOE", app.DefaultNodeHome); err != nil {
 		switch e := err.(type) {
 		case server.ErrorCode:
 			os.Exit(e.Code)
