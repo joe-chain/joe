@@ -620,9 +620,12 @@ func NewJoeApp(
 	app.configurator = module.NewConfigurator(app.appCodec, app.MsgServiceRouter(), app.GRPCQueryRouter())
 	app.mm.RegisterServices(app.configurator)
 
-	// RegisterUpgradeHandlers is used for registering any on-chain upgrades.
+	// setupUpgradeHandlers is used for registering any on-chain upgrades.
 	// Make sure it's called after `app.mm` and `app.configurator` are set.
-	app.setupUpgradeStoreLoaders()
+	app.setupUpgradeHandlers(app.configurator)
+
+	// register upgrade
+	app.setupUpgradeHandlers(app.configurator)
 
 	// add test gRPC service for testing gRPC queries in isolation
 	testdata.RegisterQueryServer(app.GRPCQueryRouter(), testdata.QueryImpl{})
@@ -908,7 +911,22 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 }
 
 // configure store loader that checks if version == upgradeHeight and applies store upgrades.
-func (app *JoeApp) setupUpgradeStoreLoaders() {
+// Evmos
+func (app *JoeApp) setupUpgradeHandlers(cfg module.Configurator) {
+	for _, upgrade := range Upgrades {
+		app.UpgradeKeeper.SetUpgradeHandler(
+			upgrade.UpgradeName,
+			upgrade.CreateUpgradeHandler(
+				app.mm,
+				cfg,
+				app,
+			),
+		)
+	}
+
+	// When a planned update height is reached, the old binary will panic
+	// writing on disk the height and name of the update that triggered it
+	// This will read that value, and execute the preparations for the upgrade.
 	upgradeInfo, err := app.UpgradeKeeper.ReadUpgradeInfoFromDisk()
 	if err != nil {
 		panic(fmt.Sprintf("failed to read upgrade info from disk %s", err))
@@ -918,9 +936,16 @@ func (app *JoeApp) setupUpgradeStoreLoaders() {
 		return
 	}
 
-	for _, upgrade := range Upgrades {
-		if upgradeInfo.Name == upgrade.UpgradeName {
-			app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, &upgrade.StoreUpgrades))
+	var storeUpgrades *storetypes.StoreUpgrades
+	switch upgradeInfo.Name {
+	case "test":
+		storeUpgrades = &storetypes.StoreUpgrades{
+			// Added: []string{"example"},
 		}
+	}
+
+	if storeUpgrades != nil {
+		// configure store loader that checks if version == upgradeHeight and applies store upgrades
+		app.SetStoreLoader(upgradetypes.UpgradeStoreLoader(upgradeInfo.Height, storeUpgrades))
 	}
 }
