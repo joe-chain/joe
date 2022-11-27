@@ -11,8 +11,11 @@ import (
 // An upgrade must implement this struct, and then set it in the app.go.
 // The app.go will then define the handler.
 type Upgrade struct {
-	// Upgrade version name, for the upgrade handler, e.g. `
+	// Upgrade version name, for the upgrade handler, e.g. `v7`
 	UpgradeName string
+
+	// Binary Locations / download links
+	UpgradeInfo string
 
 	// Function that creates an upgrade handler
 	CreateUpgradeHandler func(mm *module.Manager, configurator module.Configurator, keepers *JoeApp) upgradetypes.UpgradeHandler

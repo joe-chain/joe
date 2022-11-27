@@ -205,7 +205,20 @@ func GetEnabledProposals() []wasm.ProposalType {
 }
 
 var (
-	Upgrades = []Upgrade{}
+	// Clean this up in the future to its own folder
+	v2baseLink = "https://github.com/joe-chain/joe/releases/download/v2/joe_0.0.2"
+	Upgrades   = []Upgrade{
+		{
+			UpgradeName: "v2",
+			UpgradeInfo: fmt.Sprintf(`'{"binaries":{"darwin/arm64":"_Darwin_arm64.tar.gz","darwin/amd64":"%[1]s_Darwin_amd64.tar.gz","linux/arm64":"%[1]s_Linux_arm64.tar.gz","linux/amd64":"%[1]s_Windows_x86_64.zip"}}'`, v2baseLink),
+			CreateUpgradeHandler: func(mm *module.Manager, configurator module.Configurator, keepers *JoeApp) upgradetypes.UpgradeHandler {
+				return func(ctx sdk.Context, _ upgradetypes.Plan, vm module.VersionMap) (module.VersionMap, error) {
+					return mm.RunMigrations(ctx, configurator, vm)
+				}
+			},
+			StoreUpgrades: storetypes.StoreUpgrades{},
+		},
+	}
 
 	// DefaultNodeHome default home directories for the application daemon
 	DefaultNodeHome string
@@ -937,10 +950,10 @@ func (app *JoeApp) setupUpgradeHandlers(cfg module.Configurator) {
 	}
 
 	var storeUpgrades *storetypes.StoreUpgrades
-	switch upgradeInfo.Name {
-	case "test":
-		storeUpgrades = &storetypes.StoreUpgrades{
-			// Added: []string{"example"},
+	for _, upgrade := range Upgrades {
+		if upgrade.UpgradeName == upgradeInfo.Name {
+			storeUpgrades = &upgrade.StoreUpgrades
+			break
 		}
 	}
 
