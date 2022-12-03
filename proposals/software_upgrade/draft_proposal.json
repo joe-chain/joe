@@ -1,0 +1,17 @@
+{
+ "messages": [
+  {
+   "@type": "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade",
+   "authority": "joe10d07y265gmmuvt4z0w9aw880jnsr700jnk9mx9",
+   "plan": {
+    "name": "TokenFactory Bindings Fix",
+    "time": "0001-01-01T00:00:00Z",
+    "height": "0",
+    "info": "",
+    "upgraded_client_state": null
+   }
+  }
+ ],
+ "metadata": "ipfs://CID",
+ "deposit": "100ujoe"
+}
