@@ -635,9 +635,6 @@ func NewJoeApp(
 	// Make sure it's called after `app.mm` and `app.configurator` are set.
 	app.setupUpgradeHandlers(app.configurator)
 
-	// register upgrade
-	app.setupUpgradeHandlers(app.configurator)
-
 	// add test gRPC service for testing gRPC queries in isolation
 	testdata.RegisterQueryServer(app.GRPCQueryRouter(), testdata.QueryImpl{})
 
