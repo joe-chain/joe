@@ -6,7 +6,7 @@
    "plan": {
     "name": "v0.0.2 upgrade",
     "time": "0001-01-01T00:00:00Z",
-    "height": "10",
+    "height": "350000",
     "info": "",
     "upgraded_client_state": null
    }
