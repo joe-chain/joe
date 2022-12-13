@@ -1,7 +1,7 @@
 {
- "title": "JoeChain TokenFactory fix",
- "authors": "Reecepbcups",
- "summary": "This upgrade will patch bankKeeper with tokenfactory to allow for wasmbindings",
+ "title": "JoeChain v0.0.2 upgrade",
+ "authors": "Reecepbcups,gadikian",
+ "summary": "This upgrade will patch bankKeeper with tokenfactory to allow for wasmbindings, other minor fixes for ledger & cosmos sdk",
  "details": ".",
  "proposal_forum_url": "http://justjoe.app",
  "vote_option_context": "Vote yes to upgrade to this binary - https://github.com/joe-chain/joe/releases/tag/v0.0.2"

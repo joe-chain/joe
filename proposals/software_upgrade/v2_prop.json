@@ -4,10 +4,10 @@
    "@type": "/cosmos.upgrade.v1beta1.MsgSoftwareUpgrade",
    "authority": "joe10d07y265gmmuvt4z0w9aw880jnsr700jnk9mx9",
    "plan": {
-    "name": "v0.0.2 upgrade",
+    "name": "v2",
     "time": "0001-01-01T00:00:00Z",
     "height": "350000",
-    "info": "",
+    "info": "v2",
     "upgraded_client_state": null
    }
   }
