@@ -172,6 +172,11 @@ import (
 	// joeante
 	joeante "github.com/reecepbcups/joe/app/ante"
 
+	// FeeShare
+	feeshare "github.com/CosmosContracts/juno/v13/x/feeshare"
+	feesharekeeper "github.com/CosmosContracts/juno/v13/x/feeshare/keeper"
+	feesharetypes "github.com/CosmosContracts/juno/v13/x/feeshare/types"
+
 	// unnamed import of statik for swagger UI support
 	_ "github.com/cosmos/cosmos-sdk/client/docs/statik"
 )
@@ -251,6 +256,7 @@ var (
 		nftmodule.AppModuleBasic{},
 		tokenfactory.AppModuleBasic{},
 		globalfee.AppModuleBasic{},
+		feeshare.AppModuleBasic{},
 		wasm.AppModuleBasic{},
 	)
 
@@ -315,6 +321,8 @@ type JoeApp struct {
 	WasmKeeper         wasm.Keeper
 	TokenFactoryKeeper tokenfactorykeeper.Keeper
 	TransferModule     transfer.AppModule
+
+	FeeShareKeeper feesharekeeper.Keeper
 
 	// the module manager
 	mm *module.Manager
@@ -547,6 +555,15 @@ func NewJoeApp(
 	)
 	app.WasmKeeper = wasmKeeper
 
+	app.FeeShareKeeper = feesharekeeper.NewKeeper(
+		app.keys[feesharetypes.StoreKey],
+		appCodec,
+		app.GetSubspace(feesharetypes.ModuleName),
+		app.BankKeeper,
+		app.WasmKeeper,
+		authtypes.FeeCollectorName,
+	)
+
 	// wire up x/wasm to IBC
 	ibcRouter.AddRoute(wasm.ModuleName, wasm.NewIBCHandler(app.WasmKeeper, app.IBCKeeper.ChannelKeeper))
 	app.IBCKeeper.SetRouter(ibcRouter)
@@ -735,6 +752,10 @@ func (app *JoeApp) setAnteHandler(appOpts servertypes.AppOptions, txConfig clien
 
 		Cdc:       app.appCodec,
 		GovKeeper: app.GovKeeper,
+
+		//FeeShare
+		FeeShareKeeper: app.FeeShareKeeper,
+		BankKeeperFork: app.BankKeeper,
 	}
 
 	anteHandler, err := joeante.NewAnteHandler(handler)
@@ -919,6 +940,7 @@ func initParamsKeeper(appCodec codec.BinaryCodec, legacyAmino *codec.LegacyAmino
 	paramsKeeper.Subspace(tokenfactorytypes.ModuleName)
 	paramsKeeper.Subspace(globalfee.ModuleName)
 	paramsKeeper.Subspace(wasm.ModuleName)
+	paramsKeeper.Subspace(feesharetypes.ModuleName)
 
 	return paramsKeeper
 }

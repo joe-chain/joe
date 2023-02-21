@@ -14,6 +14,9 @@ import (
 
 	codec "github.com/cosmos/cosmos-sdk/codec"
 
+	feeshareante "github.com/CosmosContracts/juno/v13/x/feeshare/ante"
+	feesharekeeper "github.com/CosmosContracts/juno/v13/x/feeshare/keeper"
+
 	"cosmossdk.io/errors"
 )
 
@@ -30,6 +33,10 @@ type HandlerOptions struct {
 
 	Cdc       codec.BinaryCodec
 	GovKeeper govkeeper.Keeper
+
+	// FeeShare
+	FeeShareKeeper feesharekeeper.Keeper
+	BankKeeperFork feeshareante.BankKeeper
 }
 
 func NewAnteHandler(opts HandlerOptions) (sdk.AnteHandler, error) {
@@ -67,6 +74,7 @@ func NewAnteHandler(opts HandlerOptions) (sdk.AnteHandler, error) {
 		// decorators.NewGovPreventNoAndAbstainDecorator(opts.)
 		// if opts.TxFeeCheck is nil,  it is the default fee check
 		ante.NewDeductFeeDecorator(opts.AccountKeeper, opts.BankKeeper, opts.FeegrantKeeper, opts.TxFeeChecker),
+		feeshareante.NewFeeSharePayoutDecorator(opts.BankKeeperFork, opts.FeeShareKeeper),
 		ante.NewSetPubKeyDecorator(opts.AccountKeeper), // SetPubKeyDecorator must be called before all signature verification decorators
 		ante.NewValidateSigCountDecorator(opts.AccountKeeper),
 		ante.NewSigGasConsumeDecorator(opts.AccountKeeper, sigGasConsumer),
