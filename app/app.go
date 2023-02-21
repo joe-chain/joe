@@ -735,7 +735,7 @@ func (app *JoeApp) setAnteHandler(appOpts servertypes.AppOptions, txConfig clien
 		StakingSubspace:      app.GetSubspace(stakingtypes.ModuleName),
 
 		Cdc:       app.appCodec,
-		GovKeeper: &app.GovKeeper,
+		GovKeeper: app.GovKeeper,
 	}
 
 	anteHandler, err := joeante.NewAnteHandler(handler)

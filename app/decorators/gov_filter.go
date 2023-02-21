@@ -8,7 +8,7 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/x/authz"
 	govkeeper "github.com/cosmos/cosmos-sdk/x/gov/keeper"
-	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types/v1beta1"
+	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types/v1"
 )
 
 var DefaultIsAppSimulation = false
@@ -18,9 +18,9 @@ type GovPreventNoAndAbstainDecorator struct {
 	cdc       codec.BinaryCodec
 }
 
-func NewGovPreventNoAndAbstainDecorator(cdc codec.BinaryCodec, govKeeper *govkeeper.Keeper) GovPreventNoAndAbstainDecorator {
+func NewGovPreventNoAndAbstainDecorator(cdc codec.BinaryCodec, govKeeper govkeeper.Keeper) GovPreventNoAndAbstainDecorator {
 	return GovPreventNoAndAbstainDecorator{
-		govKeeper: *govKeeper,
+		govKeeper: govKeeper,
 		cdc:       cdc,
 	}
 }
@@ -47,7 +47,10 @@ func checkVoteOptions(option govtypes.VoteOption) error {
 	case govtypes.OptionNoWithVeto:
 		return nil
 	default:
-		return sdkerrrors.Wrapf(sdkerrrors.ErrInvalidRequest, "only votes yes and no with veto votes are allowed.")
+		return sdkerrrors.Wrapf(
+			sdkerrrors.ErrInvalidRequest,
+			"only YES and NO_WITH_VETO votes are allowed.",
+		)
 	}
 }
 

@@ -27,7 +27,7 @@ type HandlerOptions struct {
 	StakingSubspace      paramtypes.Subspace
 
 	Cdc       codec.BinaryCodec
-	GovKeeper *govkeeper.Keeper
+	GovKeeper govkeeper.Keeper
 }
 
 func NewAnteHandler(opts HandlerOptions) (sdk.AnteHandler, error) {
@@ -45,9 +45,6 @@ func NewAnteHandler(opts HandlerOptions) (sdk.AnteHandler, error) {
 	}
 	if opts.GlobalFeeSubspace.Name() == "" {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrNotFound, "globalfee param store is required for AnteHandler")
-	}
-	if opts.GovKeeper == nil {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "gov keeper is required for AnteHandler")
 	}
 
 	sigGasConsumer := opts.SigGasConsumer
