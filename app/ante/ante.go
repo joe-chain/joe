@@ -2,7 +2,7 @@ package ante
 
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+	// sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/x/auth/ante"
 	govkeeper "github.com/cosmos/cosmos-sdk/x/gov/keeper"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
@@ -13,6 +13,8 @@ import (
 	decorators "github.com/reecepbcups/joe/app/decorators"
 
 	codec "github.com/cosmos/cosmos-sdk/codec"
+
+	"cosmossdk.io/errors"
 )
 
 // https://github.com/cosmos/gaia/blob/main/ante/ante.go
@@ -32,19 +34,20 @@ type HandlerOptions struct {
 
 func NewAnteHandler(opts HandlerOptions) (sdk.AnteHandler, error) {
 	if opts.AccountKeeper == nil {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "account keeper is required for AnteHandler")
+		// return nil, errors.Wrap(errors.Error{}, "account keeper is required for AnteHandler")
+		return nil, errors.Wrap(errors.Error{}, "account keeper is required for AnteHandler")
 	}
 	if opts.BankKeeper == nil {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "bank keeper is required for AnteHandler")
+		return nil, errors.Wrap(errors.Error{}, "bank keeper is required for AnteHandler")
 	}
 	if opts.SignModeHandler == nil {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "sign mode handler is required for ante builder")
+		return nil, errors.Wrap(errors.Error{}, "sign mode handler is required for ante builder")
 	}
 	if opts.IBCkeeper == nil {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrLogic, "IBC keeper is required for middlewares")
+		return nil, errors.Wrap(errors.Error{}, "IBC keeper is required for middlewares")
 	}
 	if opts.GlobalFeeSubspace.Name() == "" {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrNotFound, "globalfee param store is required for AnteHandler")
+		return nil, errors.Wrap(errors.Error{}, "globalfee param store is required for AnteHandler")
 	}
 
 	sigGasConsumer := opts.SigGasConsumer

@@ -1,10 +1,9 @@
 package decorators
 
 import (
+	"cosmossdk.io/errors"
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-
-	sdkerrrors "github.com/cosmos/cosmos-sdk/types/errors"
 
 	"github.com/cosmos/cosmos-sdk/x/authz"
 	govkeeper "github.com/cosmos/cosmos-sdk/x/gov/keeper"
@@ -47,8 +46,7 @@ func checkVoteOptions(option govtypes.VoteOption) error {
 	case govtypes.OptionNoWithVeto:
 		return nil
 	default:
-		return sdkerrrors.Wrapf(
-			sdkerrrors.ErrInvalidRequest,
+		return errors.Wrapf(errors.Error{},
 			"only YES and NO_WITH_VETO votes are allowed.",
 		)
 	}
@@ -77,7 +75,7 @@ func (gpnabd GovPreventNoAndAbstainDecorator) checkVoteMsg(ctx sdk.Context, msgs
 			for _, v := range msg.Msgs {
 				err := gpnabd.cdc.UnpackAny(v, &innerMsg)
 				if err != nil {
-					return sdkerrrors.Wrapf(sdkerrrors.ErrInvalidRequest, "cannot unmarshal authz exec msgs")
+					return errors.Wrapf(errors.Error{}, "cannot unmarshal authz exec msgs")
 				}
 
 				err = validMsg(innerMsg)

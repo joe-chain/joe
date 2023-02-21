@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"cosmossdk.io/errors"
 	"github.com/gorilla/mux"
 	"github.com/rakyll/statik/fs"
 	"github.com/spf13/cast"
@@ -167,8 +168,6 @@ import (
 	gaiaappparams "github.com/cosmos/gaia/v8/app/params"
 	"github.com/cosmos/gaia/v8/x/globalfee"
 	gaiafeeante "github.com/cosmos/gaia/v8/x/globalfee/ante"
-
-	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 
 	// joeante
 	joeante "github.com/reecepbcups/joe/app/ante"
@@ -720,7 +719,7 @@ func (app *JoeApp) setAnteHandler(appOpts servertypes.AppOptions, txConfig clien
 			TxFeeChecker: func(ctx sdk.Context, tx sdk.Tx) (sdk.Coins, int64, error) {
 				feeTx, ok := tx.(sdk.FeeTx)
 				if !ok {
-					return nil, 0, sdkerrors.Wrap(sdkerrors.ErrTxDecode, "Tx must be a FeeTx")
+					return nil, 0, errors.Wrapf(errors.Error{}, "Tx must be a FeeTx")
 				}
 
 				feeCoins := feeTx.GetFee()
