@@ -22,7 +22,6 @@ import (
 	"github.com/cosmos/cosmos-sdk/server/api"
 	"github.com/cosmos/cosmos-sdk/server/config"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/cosmos/cosmos-sdk/version"
 
@@ -40,8 +39,8 @@ import (
 
 	// Auth
 	"github.com/cosmos/cosmos-sdk/x/auth"
-	"github.com/cosmos/cosmos-sdk/x/auth/ante"
 
+	"github.com/cosmos/cosmos-sdk/x/auth/ante"
 	authkeeper "github.com/cosmos/cosmos-sdk/x/auth/keeper"
 	"github.com/cosmos/cosmos-sdk/x/auth/posthandler"
 	authsims "github.com/cosmos/cosmos-sdk/x/auth/simulation"
@@ -165,10 +164,14 @@ import (
 	tokenfactorytypes "github.com/CosmWasm/token-factory/x/tokenfactory/types"
 
 	// GlobalFee
-	gaiaante "github.com/cosmos/gaia/v8/ante"
 	gaiaappparams "github.com/cosmos/gaia/v8/app/params"
 	"github.com/cosmos/gaia/v8/x/globalfee"
 	gaiafeeante "github.com/cosmos/gaia/v8/x/globalfee/ante"
+
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+
+	// joeante
+	joeante "github.com/reecepbcups/joe/app/ante"
 
 	// unnamed import of statik for swagger UI support
 	_ "github.com/cosmos/cosmos-sdk/client/docs/statik"
@@ -706,33 +709,36 @@ func (app *JoeApp) setAnteHandler(appOpts servertypes.AppOptions, txConfig clien
 		bypassMinFeeMsgTypes = GetDefaultBypassFeeMessages()
 	}
 
-	anteHandler, err := gaiaante.NewAnteHandler(
-		gaiaante.HandlerOptions{
-			HandlerOptions: ante.HandlerOptions{
-				AccountKeeper:   app.AccountKeeper,
-				BankKeeper:      app.BankKeeper,
-				FeegrantKeeper:  app.FeeGrantKeeper,
-				SignModeHandler: txConfig.SignModeHandler(),
-				SigGasConsumer:  ante.DefaultSigVerificationGasConsumer,
-				// TxFeeChecker is not the default fee check, it will not check if the fee meets min_gas_price, this is checked in NewFeeWithBypassDecorator already.
-				TxFeeChecker: func(ctx sdk.Context, tx sdk.Tx) (sdk.Coins, int64, error) {
-					feeTx, ok := tx.(sdk.FeeTx)
-					if !ok {
-						return nil, 0, sdkerrors.Wrap(sdkerrors.ErrTxDecode, "Tx must be a FeeTx")
-					}
+	handler := joeante.HandlerOptions{
+		HandlerOptions: ante.HandlerOptions{
+			AccountKeeper:   app.AccountKeeper,
+			BankKeeper:      app.BankKeeper,
+			FeegrantKeeper:  app.FeeGrantKeeper,
+			SignModeHandler: txConfig.SignModeHandler(),
+			SigGasConsumer:  ante.DefaultSigVerificationGasConsumer,
+			// TxFeeChecker is not the default fee check, it will not check if the fee meets min_gas_price, this is checked in NewFeeWithBypassDecorator already.
+			TxFeeChecker: func(ctx sdk.Context, tx sdk.Tx) (sdk.Coins, int64, error) {
+				feeTx, ok := tx.(sdk.FeeTx)
+				if !ok {
+					return nil, 0, sdkerrors.Wrap(sdkerrors.ErrTxDecode, "Tx must be a FeeTx")
+				}
 
-					feeCoins := feeTx.GetFee()
-					priority := gaiafeeante.GetTxPriority(feeCoins)
+				feeCoins := feeTx.GetFee()
+				priority := gaiafeeante.GetTxPriority(feeCoins)
 
-					return feeCoins, priority, nil
-				},
+				return feeCoins, priority, nil
 			},
-			IBCkeeper:            app.IBCKeeper,
-			BypassMinFeeMsgTypes: bypassMinFeeMsgTypes,
-			GlobalFeeSubspace:    app.GetSubspace(globalfee.ModuleName),
-			StakingSubspace:      app.GetSubspace(stakingtypes.ModuleName),
 		},
-	)
+		IBCkeeper:            app.IBCKeeper,
+		BypassMinFeeMsgTypes: bypassMinFeeMsgTypes,
+		GlobalFeeSubspace:    app.GetSubspace(globalfee.ModuleName),
+		StakingSubspace:      app.GetSubspace(stakingtypes.ModuleName),
+
+		Cdc:       app.appCodec,
+		GovKeeper: &app.GovKeeper,
+	}
+
+	anteHandler, err := joeante.NewAnteHandler(handler)
 	if err != nil {
 		panic(err)
 	}
