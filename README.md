@@ -1,6 +1,6 @@
 # joe
 
-This chain is not closed and no future updates are planned. You should not use this code for any reason, Notional labs has clearly stated they do not like when people use open-source software they put together from other individuals work. But thats okay. So this code will never be used again, and I suggest you do the same. 47 is going to be better anyways.
+This chain is now closed and no future updates are planned. You should not use this code for any reason, Notional labs has clearly stated they do not like when people use open-source software they put together from other individuals work. But thats okay. So this code will never be used again, and I suggest you do the same. 47 is going to be better anyways.
 
 ## Attributions
 
