@@ -1,62 +1,16 @@
-# Joe 2.0
+# joe
 
-Collection: <https://www.stargaze.zone/marketplace/stars1s8ydlqlacquvaxum0wegns99p3lyq0e9g32l5sl8svrqx2s08haqmpujmr>
+This chain is not closed and no future updates are planned. You should not use this code for any reason, Notional labs has clearly stated they do not like when people use open-source software they put together from other individuals work. But thats okay. So this code will never be used again, and I suggest you do the same. 47 is going to be better anyways.
 
-website: <https://www.justjoe.app/>
+## Attributions
 
-Tendermint: <https://rpc.justjoe.app/>
+JOE was a fork from eve, a project which was worked on by Reece, Jacob and Vuong @ Notional Labs. It started August of 2022 when Reece was at Craft Economy.
 
-REST API: <https://api.justjoe.app/>
+Jacob uploaded the initial chain from a copy of SimApp from the cosmos hub SDK. Then Reece fixed it all so it actually worked on SDK v46. This included fixing the home dir, adding the EVE wallet prefix, using eve params, setting up a test_node script, fixing the genesis, using pebbledb (Something which Notional paid someone else a $2,000USD bounty to fix). During this time Jacob ensured to fix the README. I then added IBC and wasmd & e2e test with a CW721 contract. Then I fixed the protobuf files, and commands. I then did the tokenfactory v46 transfer from v45 from Confios fork. Jacob then created a testnet.yml for the v46 command testnet, which later did not work and I reverted. I then did version bumps and added globalfee from Gaia v8. Then Reece set the minimum commission to 10%, and fixed IBC to actually work for relaying between a local chain I ran. Nghuyen then fixed some proto things when it came to the scripts, which was from the gaia repository. Vuong then did some work with the Native liquid staking which was from iqlusion's module. Everything after this was just version bumps. The future PRs for e2e after this I removed as there was no reason to use them.
 
-EXPLORER: <https://ping.justjoe.app/> (WIP, CORS issue)
+You can find this proof here [https://github.com/eve-network/eve/commits/main](https://github.com/eve-network/eve/commits/main)
 
+The chain was never launched from Notional, so after I joined (for 60 days before I quit). I decided to copy-paste this work over to this repo and rename it from eve-network to joe.
+Notional did not want any attribution as Jacob had called me and cried to me "people are saying Notional is rugging JOE chain" during my thanksgiving dinner. I launched this chain and expected it to last maybe a month. I actually launched it, and ran it for fun. No commit history was provided since it was just a copy-paste, and at the time I was so new I did not know how to commit a repo's history. I was so new to git, so this was the easiest for me. *(I actually know how to use git now, but in August of last year I was very new to git & public repos which is not just a commit and push).
 
-Anyone can be a Joe, You don't have to own a Joe. You can right-click save images
-
-# What is JOE
-
-Joe is Joe.
-Joe has no dev fund, only airdrop to JOE holders.
-Joe has a 69.420% Tax and 69% inflation.
-In the future, JOE can add a burn
-Joe makes no promises, though Joe has many features.
-Joe is better than many mainnets, this is a Joenet.
-Joe will slash you for many things, and Joe will be deflationary as you stake.
-
-Joe Space <https://www.cosmosibc.space/2022/11/1459665306268454915/%24JOE.mp3>
-3 hour 51 minute
-
-# dAPPs coming to Joe
-- [Joertis Joeconomia](https://twitter.com/Cryptomancer__/status/1594283077882232834?s=20&t=SJJFfDS5ELmaBCj0JDgyhQ)
-
-# Install Guide
-- https://polkachu.com/installation/joe
-Then
-- joed tx staking edit-validator --identity 6DB8AEDEFE5AB675 --new-moniker Joe --website https://justjoe.app --details="Just Joe" --commission-rate 0.069 --from validator
-(All vals must run the same moniker, identity, website, and details. This way delegators are FORCED to evenly spread out funds without bias for best case uptime)
-
-# Tools & Services
-- https://polkachu.com/networks/joe
-
-# Endpoints
-## RPC:
-- https://rpc.justjoe.app/
-- https://joe.rpc.chandrastation.com/
-## REST
-- https://api.justjoe.app/
-- https://joe.api.chandrastation.com/
-
-
-# Launched
-- - https://joe.racoon.bet/
-
-# Launch features coming soon
-- DEX (swap.justjoe.app)
-- DAODAO name it JOEJOE
-- ICS721 in the future
-- Joe NFT Marketplace, paid in $JOE token
-- CW NFTs -> exclude badkids, the ice cream lottery
-
-# TODO:
-- x/gov: Joe (yes) and Joe With Veto (veto)
-- Airdrop custom tokens/NFTs -> other NFTs on omniflix/stargaze
+So thanks Notional for doing the v46 fork of the native liquid staking module. I would have happily removed this as it caused more issues than it solved. Oh well. Will ensure to not use it in any future products.
